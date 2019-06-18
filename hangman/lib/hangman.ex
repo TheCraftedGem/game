@@ -6,7 +6,7 @@ defmodule Hangman do
     Hangman.Server.start_link()
   end
   # defdelegate tally(game), to: Game
-  def tally(game_pid, _guess) do
+  def tally(game_pid) do
     GenServer.call(game_pid, {:tally})
   end
 
