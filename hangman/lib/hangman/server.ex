@@ -13,8 +13,12 @@ defmodule Hangman.Server do
   end
 
   def handle_call({:make_move, guess}, _from, game) do
-    {game, tally} = Hangman.make_move(game, guess)
+    {game, tally} = Game.make_move(game, guess)
     {:reply, tally, game}
+  end
+
+  def handle_call({:tally}, _from, game) do
+    {:reply, Game.tally(game), game}
   end
 
 end
