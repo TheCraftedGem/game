@@ -33,6 +33,8 @@ defmodule Hangman.Game do
     }
   end
 
+  # private
+
   defp accept_move(game, _guess, _already_guessed = true) do
     Map.put(game, :game_state, :already_used)
   end
@@ -46,7 +48,7 @@ defmodule Hangman.Game do
     new_state  = MapSet.new(game.letters)
     |> MapSet.subset?(game.used)
     |> maybe_won()
-    %{game | game_state: new_state}
+    %{ game | game_state: new_state}
   end
 
   defp score_guess(game = %{turns_left: 1}, _bad_guess) do
@@ -58,8 +60,8 @@ defmodule Hangman.Game do
 
   defp score_guess(game = %{turns_left: turns_left}, _bad_guess) do
     %{game |
-      game_state: :bad_guess,
-      turns_left: turns_left - 1
+        game_state: :bad_guess,
+        turns_left: turns_left - 1
     }
   end
 
